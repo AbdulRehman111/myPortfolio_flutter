@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdul Rehman — Curriculum Vitae</title>
+  <style>
+    :root {
+      --navy: #071525;
+      --ink: #122033;
+      --gold: #c4a35a;
+      --blue: #1e4e79;
+      --muted: #5b6b80;
+      --line: #d8e0ea;
+      --paper: #f7f4ee;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e8edf3; color: var(--ink); font-family: Inter, "Segoe UI", sans-serif; }
+    .sheet {
+      max-width: 900px;
+      margin: 32px auto;
+      background: #fff;
+      box-shadow: 0 24px 80px rgba(7,21,37,.16);
+      overflow: hidden;
+    }
+    .hero {
+      background: linear-gradient(135deg, #071525 0%, #123056 58%, #1e4e79 100%);
+      color: #fff;
+      padding: 40px 48px;
+      position: relative;
+    }
+    .hero:after {
+      content: "";
+      position: absolute;
+      right: -40px; top: -40px;
+      width: 220px; height: 220px;
+      border: 18px solid rgba(196,163,90,.22);
+      border-radius: 50%;
+    }
+    .hero-row { display: flex; align-items: center; gap: 28px; position: relative; z-index: 1; }
+    .cv-photo {
+      width: 128px; height: 128px; object-fit: cover; flex: 0 0 auto;
+      border-radius: 22px; border: 2px solid var(--gold);
+      box-shadow: 0 12px 32px rgba(0,0,0,.35);
+    }
+    .kicker { letter-spacing: .28em; text-transform: uppercase; color: var(--gold); font-size: 11px; margin: 0 0 12px; }
+    h1 { margin: 0; font-size: 42px; letter-spacing: -.03em; }
+    .role { margin: 10px 0 0; color: #c9d7e8; font-size: 16px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 14px 22px; margin-top: 22px; font-size: 13px; color: #d7e2ee; }
+    .meta a { color: #fff; }
+    .body { display: grid; grid-template-columns: 1.7fr .9fr; gap: 0; }
+    .col { padding: 36px 40px; }
+    .side { background: var(--paper); border-left: 1px solid var(--line); }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 13px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 8px;
+      display: inline-block;
+    }
+    p, li { font-size: 14px; line-height: 1.65; color: #243246; }
+    .job { margin: 0 0 22px; }
+    .job h3 { margin: 0; font-size: 17px; }
+    .job .org { color: var(--blue); font-weight: 600; }
+    .job .dates { color: var(--muted); font-size: 12px; margin: 4px 0 8px; }
+    .chip { display: inline-block; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; margin: 0 6px 8px 0; font-size: 12px; }
+    @media (max-width: 760px) {
+      html, body { background: #fff; }
+      .sheet { margin: 0; box-shadow: none; }
+      .body { grid-template-columns: 1fr; }
+      .side { border-left: 0; border-top: 1px solid var(--line); }
+      .hero, .col { padding: 22px 16px; }
+      .hero-row { flex-direction: column; text-align: center; gap: 16px; }
+      .cv-photo { width: 108px; height: 108px; }
+      .meta { justify-content: center; gap: 8px 12px; font-size: 12px; }
+      h1 { font-size: 28px; }
+      .role { font-size: 14px; }
+      .hero:after { width: 120px; height: 120px; right: -48px; top: -48px; }
+      .chip { margin: 0 6px 8px 0; }
+    }
+    @media print { body { background: #fff; } .sheet { margin: 0; box-shadow: none; } }
+  </style>
+</head>
+<body>
+  <article class="sheet">
+    <header class="hero">
+      <div class="hero-row">
+        <img class="cv-photo" src="../../assets/images/profile/profile.jpeg" alt="Abdul Rehman">
+        <div>
+          <p class="kicker">Curriculum Vitae</p>
+          <h1>Abdul Rehman</h1>
+          <p class="role">Software Engineer · Full Stack Developer · Flutter &amp; Core Mobile</p>
+          <div class="meta">
+            <span>Fujairah, United Arab Emirates</span>
+            <a href="mailto:abdulrehmanhanif111@gmail.com">abdulrehmanhanif111@gmail.com</a>
+            <a href="https://github.com/AbdulRehman111">github.com/AbdulRehman111</a>
+            <a href="https://www.linkedin.com/in/abdul-rehman-1602">linkedin.com/in/abdul-rehman-1602</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="body">
+      <div class="col">
+        <h2>Profile</h2>
+        <p>I am a passionate Software Engineer with 9+ years of professional experience in software development, with a strong focus on building Web and Mobile Applications and end-to-end digital solutions. I independently design and develop complete applications from the ground up — mobile, web, backend services, REST APIs, databases, and third-party integrations — from planning and architecture through UI/UX, authentication, testing, deployment and production support.</p>
+        <p>Great software is more than well-written code: understand the problem, choose the right technology, design a great user experience, build a solid foundation, and deliver lasting value.</p>
+        <h2>Experience</h2>
+        <div class="job">
+          <h3>Software Engineer</h3>
+          <div class="org">Fujairah Municipality</div>
+          <div class="dates">2017 — Present · Fujairah, UAE</div>
+          <ul>
+            <li>Owned full software lifecycle across mobile, web, API/backend and database work for municipal digital services.</li>
+            <li>Delivered smartFUJAIRAH (Flutter) with payments, maps, KML overlays, bilingual RTL/LTR, dark theme and store publishing.</li>
+            <li>Built and maintained FWMD / Think Green with multi-map configuration, KML/KMZ overlays, ASP.NET and SQL Server.</li>
+            <li>Integrated JWT auth, Firebase, Apple Pay / Google Pay, N-Genius and third-party APIs.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <h3>Full Stack &amp; Mobile Delivery</h3>
+          <div class="org">Fujairah Municipality — Digital Services</div>
+          <div class="dates">2018 — Present · Product stream</div>
+          <ul>
+            <li>Shipped store-listed Flutter apps with Apple Pay, Google Pay and N-Genius checkout.</li>
+            <li>Built land and inspection map flows with KML/KMZ overlays and multi-map switching.</li>
+            <li>Delivered Arabic-first RTL layouts that also work correctly in English LTR.</li>
+            <li>Coordinated UAT, release notes, App Store / Play Console publishing and hotfixes.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <h3>Web, API &amp; GIS Engineer</h3>
+          <div class="org">Fujairah Municipality — Operations Platforms</div>
+          <div class="dates">2017 — Present · Internal systems</div>
+          <ul>
+            <li>Designed and maintained FWMD / Think Green workflows, roles and operational records.</li>
+            <li>Implemented Google Maps, Leaflet and Mapbox with GeoJSON and KML overlays.</li>
+            <li>Wrote T-SQL, stored procedures, views and indexes for operational reporting.</li>
+          </ul>
+        </div>
+        <div class="job">
+          <h3>Trainee Software Developer</h3>
+          <div class="org">Centegy Technology</div>
+          <div class="dates">February — April 2017 · Karachi</div>
+          <ul>
+            <li>Generated entity screens in ASP.NET.</li>
+            <li>Wrote SQL queries for application data.</li>
+            <li>Created and modified Crystal Reports.</li>
+          </ul>
+        </div>
+        <h2>Selected work</h2>
+        <div class="job">
+          <h3>smartFUJAIRAH</h3>
+          <p>Official municipal digital services app — requests, land, wallet, payments, documents, maps. Flutter, Firebase, REST, JWT.</p>
+        </div>
+        <div class="job">
+          <h3>FWMD — Waste Management</h3>
+          <p>Environmental operations platform: inspections, collection workflows, records and location services. ASP.NET, SQL Server, Google Maps.</p>
+        </div>
+      </div>
+      <aside class="col side">
+        <h2>Core skills</h2>
+        <p>
+           <span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Android</span>
+           <span class="chip">Java</span><span class="chip">Kotlin</span><span class="chip">React Native</span>
+           <span class="chip">ASP.NET</span><span class="chip">C#</span><span class="chip">.NET</span>
+           <span class="chip">REST</span><span class="chip">JWT</span><span class="chip">SQL Server</span>
+           <span class="chip">Firebase</span><span class="chip">React</span><span class="chip">Angular</span>
+           <span class="chip">TypeScript</span><span class="chip">Python</span><span class="chip">Ionic</span>
+           <span class="chip">Maps</span><span class="chip">KML / KMZ</span><span class="chip">GeoJSON</span>
+            <span class="chip">RTL / LTR</span><span class="chip">Dark Theme</span><span class="chip">Arabic / English</span>
+            <span class="chip">IIS</span><span class="chip">Swagger</span><span class="chip">Postman</span>
+            <span class="chip">PWA</span><span class="chip">CI / CD</span><span class="chip">UAT</span>
+         </p>
+        <h2>Languages</h2>
+        <p>English · Arabic (RTL/LTR and dark-theme product delivery)</p>
+        <h2>Recognition</h2>
+        <ul>
+          <li>Fujairah Municipality Excellence Award — Silver, 2019</li>
+          <li>Best New Employee of the Year, 2020</li>
+          <li>Best Idea of the Year, 2020</li>
+          <li>Certificates of Appreciation — Think Green &amp; Fekraty</li>
+        </ul>
+        <h2>Education</h2>
+        <p><strong>B.Sc. Computer Science</strong><br>Indus University, Karachi<br>2012 — 2016</p>
+        <p><strong>Mobile Development using Flutter</strong><br>Vinsys Arabia · 2026</p>
+        <p><strong>Android Application Development</strong><br>Mindscapes Technologies, Karachi</p>
+        <p><strong>Web Development</strong><br>Saylani Mass Training Program, Karachi · from 2016</p>
+        <p><strong>Office Automation (MS Office) — Grade A</strong><br>APECO · 2013</p>
+        <p><strong>Hardware &amp; Networking — Grade A</strong><br>iTEC Computer Centre, Karachi · 2012</p>
+        <p><strong>HSC</strong><br>Govt. Degree Boys College, Karachi · 2010 — 2012</p>
+        <p><strong>SSC</strong><br>R.I.G. &amp; B. Secondary School, Karachi · 2008 — 2009</p>
+      </aside>
+    </div>
+  </article>
+</body>
+</html>

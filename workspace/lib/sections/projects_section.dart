@@ -1,0 +1,288 @@
+import 'package:flutter/material.dart';
+import 'package:portfolio/generated/app_localizations.dart';
+
+import '../app/app_settings.dart';
+import '../data/portfolio_data.dart';
+import '../models/models.dart';
+import '../theme/app_colors.dart';
+import '../utils/launch_helper.dart';
+import '../widgets/hover_card.dart';
+import '../widgets/responsive_grid.dart';
+import '../widgets/section_shell.dart';
+import '../widgets/status_chip.dart';
+
+class ProjectsSection extends StatefulWidget {
+  const ProjectsSection({super.key});
+
+  @override
+  State<ProjectsSection> createState() => _ProjectsSectionState();
+}
+
+class _ProjectsSectionState extends State<ProjectsSection> {
+  ProjectCategory? _filter;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final lang = AppSettingsScope.of(context).locale.languageCode;
+    final items = PortfolioData.projects.where((p) {
+      if (_filter == null) return true;
+      return p.category == _filter;
+    }).toList();
+
+    return SectionShell(
+      id: 'projects',
+      alternate: true,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SectionHeader(
+            eyebrow: l10n.projectsEyebrow,
+            title: l10n.projectsTitle,
+            lead: l10n.projectsLead,
+          ),
+          const SizedBox(height: 24),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: [
+              _FilterChip(
+                label: l10n.filterAll,
+                selected: _filter == null,
+                onTap: () => setState(() => _filter = null),
+              ),
+              _FilterChip(
+                label: l10n.filterMobile,
+                selected: _filter == ProjectCategory.mobile,
+                onTap: () => setState(() => _filter = ProjectCategory.mobile),
+              ),
+              _FilterChip(
+                label: l10n.filterWeb,
+                selected: _filter == ProjectCategory.web,
+                onTap: () => setState(() => _filter = ProjectCategory.web),
+              ),
+              _FilterChip(
+                label: l10n.filterFullStack,
+                selected: _filter == ProjectCategory.fullStack,
+                onTap: () => setState(() => _filter = ProjectCategory.fullStack),
+              ),
+              _FilterChip(
+                label: l10n.filterApi,
+                selected: _filter == ProjectCategory.api,
+                onTap: () => setState(() => _filter = ProjectCategory.api),
+              ),
+            ],
+          ),
+          const SizedBox(height: 28),
+          ResponsiveGrid(
+            desktopColumns: 2,
+            children: [
+              for (final project in items)
+                _ProjectCard(project: project, lang: lang, l10n: l10n),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _FilterChip extends StatelessWidget {
+  const _FilterChip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final String label;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return ChoiceChip(
+      label: Text(label),
+      selected: selected,
+      onSelected: (_) => onTap(),
+      selectedColor: AppColors.navy,
+      labelStyle: TextStyle(
+        color: selected ? Colors.white : Theme.of(context).colorScheme.onSurface,
+        fontWeight: FontWeight.w600,
+      ),
+      side: BorderSide(color: Theme.of(context).dividerColor),
+    );
+  }
+}
+
+class _ProjectCard extends StatelessWidget {
+  const _ProjectCard({
+    required this.project,
+    required this.lang,
+    required this.l10n,
+  });
+
+  final Project project;
+  final String lang;
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return HoverCard(
+      padding: EdgeInsets.zero,
+      semanticLabel: project.name.resolve(lang),
+      onTap: () => _openDetails(context),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+            child: AspectRatio(
+              aspectRatio: 16 / 9,
+              child: Image.asset(project.imageAsset, fit: BoxFit.cover),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    if (project.featured)
+                      StatusChip(label: l10n.featuredBadge, tone: ChipTone.accent),
+                    if (project.isPlaceholder)
+                      StatusChip(label: l10n.placeholderBadge, tone: ChipTone.warn),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Text(project.name.resolve(lang), style: theme.textTheme.titleLarge),
+                const SizedBox(height: 8),
+                Text(
+                  project.description.resolve(lang),
+                  style: theme.textTheme.bodySmall,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 14),
+                Wrap(
+                  spacing: 6,
+                  runSpacing: 6,
+                  children: [
+                    for (final tech in project.technologies.take(5))
+                      TechChip(label: tech),
+                  ],
+                ),
+                const SizedBox(height: 16),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: [
+                    if (project.hasDemo)
+                      OutlinedButton(
+                        onPressed: () => openExternal(project.demoUrl!),
+                        child: Text(l10n.actionDemo),
+                      ),
+                    if (project.hasGithub)
+                      OutlinedButton(
+                        onPressed: () => openExternal(project.githubUrl!),
+                        child: Text(l10n.actionGithub),
+                      ),
+                    if (project.hasPlay)
+                      OutlinedButton(
+                        onPressed: () => openExternal(project.playStoreUrl!),
+                        child: Text(l10n.actionPlay),
+                      ),
+                    if (project.hasAppStore)
+                      OutlinedButton(
+                        onPressed: () => openExternal(project.appStoreUrl!),
+                        child: Text(l10n.actionAppStore),
+                      ),
+                    TextButton(
+                      onPressed: () => _openDetails(context),
+                      child: Text(l10n.actionView),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _openDetails(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) {
+        return Dialog(
+          insetPadding: const EdgeInsets.all(24),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 720, maxHeight: 720),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(28),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          project.name.resolve(lang),
+                          style: Theme.of(ctx).textTheme.headlineMedium,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () => Navigator.pop(ctx),
+                        icon: const Icon(Icons.close),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.asset(project.imageAsset),
+                  ),
+                  const SizedBox(height: 16),
+                  Text(project.description.resolve(lang)),
+                  const SizedBox(height: 16),
+                  Text(l10n.projectTech, style: Theme.of(ctx).textTheme.titleSmall),
+                  const SizedBox(height: 8),
+                  Wrap(
+                    spacing: 6,
+                    runSpacing: 6,
+                    children: [
+                      for (final t in project.technologies) TechChip(label: t),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  Text(l10n.projectFeatures, style: Theme.of(ctx).textTheme.titleSmall),
+                  const SizedBox(height: 8),
+                  for (final f in project.features.resolve(lang))
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 4),
+                      child: Text('• $f'),
+                    ),
+                  const SizedBox(height: 12),
+                  Text(
+                    l10n.projectResponsibilities,
+                    style: Theme.of(ctx).textTheme.titleSmall,
+                  ),
+                  const SizedBox(height: 8),
+                  for (final r in project.responsibilities.resolve(lang))
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 4),
+                      child: Text('• $r'),
+                    ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

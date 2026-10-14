@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample — B.Sc. Computer Science | Abdul Rehman</title>
+  <style>
+    :root { --navy:#071525; --gold:#c4a35a; --ink:#122033; --paper:#f7f1e4; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #dfe6ef; font-family: "Times New Roman", Georgia, serif; color: var(--ink); }
+    .sheet {
+      max-width: 920px; margin: 28px auto; background: var(--paper);
+      padding: 28px; position: relative; overflow: hidden;
+      box-shadow: 0 24px 60px rgba(7,21,37,.18);
+    }
+    .frame { border: 10px double var(--gold); padding: 36px 42px 32px; min-height: 640px; position: relative; }
+    .corner { position: absolute; width: 46px; height: 46px; border: 2px solid var(--navy); }
+    .tl { top: 16px; left: 16px; border-right: 0; border-bottom: 0; }
+    .tr { top: 16px; right: 16px; border-left: 0; border-bottom: 0; }
+    .bl { bottom: 16px; left: 16px; border-right: 0; border-top: 0; }
+    .br { bottom: 16px; right: 16px; border-left: 0; border-top: 0; }
+    .mark {
+      position: absolute; inset: 18% 8%; display: grid; place-items: center;
+      font-size: 96px; letter-spacing: .28em; color: rgba(196,163,90,.12);
+      font-weight: 700; transform: rotate(-18deg); pointer-events: none; font-family: Inter, sans-serif;
+    }
+    .banner {
+      display: inline-block; background: #8a1c1c; color: #fff; font-family: Inter, sans-serif;
+      font-size: 11px; letter-spacing: .22em; text-transform: uppercase; font-weight: 700;
+      padding: 6px 12px; border-radius: 999px;
+    }
+    .uni { font-family: Inter, sans-serif; letter-spacing: .32em; text-transform: uppercase; font-size: 12px; color: var(--navy); margin-top: 18px; }
+    h1 { font-size: 34px; margin: 10px 0 6px; letter-spacing: .04em; }
+    .role { font-style: italic; color: #5b6b80; margin: 0 0 22px; }
+    .name { font-size: 28px; border-bottom: 1px solid var(--gold); display: inline-block; padding: 0 18px 6px; margin: 8px 0 18px; }
+    p { line-height: 1.7; font-size: 16px; max-width: 640px; margin: 0 auto 12px; text-align: center; }
+    .meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 28px; font-family: Inter, sans-serif; font-size: 12px; }
+    .meta div { border-top: 1px solid rgba(18,32,51,.18); padding-top: 8px; text-align: center; }
+    .meta b { display: block; letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: #7a6a45; margin-bottom: 4px; }
+    .note {
+      margin-top: 28px; font-family: Inter, sans-serif; font-size: 12px; color: #8a1c1c;
+      border: 1px dashed #c48a8a; padding: 10px 14px; background: rgba(138,28,28,.06);
+    }
+    .center { text-align: center; }
+    @media (max-width: 720px) {
+      body { background: var(--paper); }
+      .sheet { margin: 0; box-shadow: none; padding: 12px; }
+      .frame { padding: 28px 16px; }
+      h1 { font-size: 24px; }
+      .name { font-size: 22px; }
+      .meta { grid-template-columns: 1fr; }
+    }
+    @media print { body { background: #fff; } .sheet { box-shadow: none; margin: 0; } }
+  </style>
+</head>
+<body>
+  <article class="sheet">
+    <div class="frame">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+      <div class="mark">SAMPLE</div>
+      <div class="center">
+        <span class="banner">Sample document — replace later</span>
+        <div class="uni">Indus University · Karachi</div>
+        <h1>Bachelor of Science</h1>
+        <p class="role">in Computer Science</p>
+        <p>This sample certifies that</p>
+        <div class="name">Abdul Rehman</div>
+        <p>has completed the undergraduate programme in Computer Science. Layout only — not an official university diploma. Replace this file with the original degree scan.</p>
+        <div class="meta">
+          <div><b>Session</b>2012 — 2016</div>
+          <div><b>Credential</b>B.Sc. Computer Science</div>
+          <div><b>Ref</b>SAMPLE-BSC-0001</div>
+        </div>
+        <p class="note">Placeholder for the original graduation degree. Keep the same filename when replacing: bsc-degree-sample.html (or swap the path in the credentials section).</p>
+      </div>
+    </div>
+  </article>
+</body>
+</html>
