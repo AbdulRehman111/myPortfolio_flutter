@@ -156,9 +156,8 @@ class _HomeScreenState extends State<HomeScreen>
                   final max = _scroll.hasClients
                       ? _scroll.position.maxScrollExtent
                       : 0.0;
-                  final value = max > 0
-                      ? (_scroll.offset / max).clamp(0.0, 1.0)
-                      : 0.0;
+                  final value =
+                      max > 0 ? (_scroll.offset / max).clamp(0.0, 1.0) : 0.0;
                   return ExcludeSemantics(
                     child: SizedBox(
                       height: 3,
@@ -191,8 +190,7 @@ class _HomeScreenState extends State<HomeScreen>
                               section('skills', const SkillsSection()),
                               section('expertise', const ExpertiseSection()),
                               const ArchitectureSection(),
-                              section(
-                                  'experience', const ExperienceSection()),
+                              section('experience', const ExperienceSection()),
                               section('projects', const ProjectsSection()),
                               section('certifications',
                                   const CertificationsSection()),
@@ -200,9 +198,10 @@ class _HomeScreenState extends State<HomeScreen>
                               section('appreciations',
                                   const AppreciationsSection()),
                               section('education', const EducationSection()),
-                              section('credentials', const CredentialsSection()),
-                              section('applications',
-                                  const ApplicationsSection()),
+                              section(
+                                  'credentials', const CredentialsSection()),
+                              section(
+                                  'applications', const ApplicationsSection()),
                               section('documents', const DocumentsSection()),
                               const QrSection(),
                               const CvSection(),
